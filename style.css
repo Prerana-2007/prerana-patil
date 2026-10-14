@@ -1,0 +1,638 @@
+/* ==========================================================================
+   PRERANA SUNIL PATIL - PORTFOLIO STYLES
+   Theme: Modern Cyber Dark | Electric Blue & Violet Accents
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #070913;
+  --bg-card: rgba(15, 20, 42, 0.65);
+  --bg-card-hover: rgba(22, 29, 61, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(139, 92, 246, 0.4);
+  --accent-purple: #8b5cf6;
+  --accent-cyan: #06b6d4;
+  --accent-blue: #3b82f6;
+  --accent-pink: #ec4899;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-code: 'Fira Code', monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #070913;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b5cf6, #06b6d4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a78bfa, #22d3ee);
+}
+
+/* Selection Color */
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: #ffffff;
+}
+
+/* Base Body Setup */
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-code {
+  font-family: var(--font-code);
+}
+
+/* Canvas Background for Particle Network */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+/* Ambient Radial Glow Orbs */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+  transition: all 1s ease;
+}
+
+.glow-purple {
+  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+}
+.glow-cyan {
+  background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+}
+.glow-blue {
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.2);
+  transform: translateY(-4px);
+}
+
+.glass-nav {
+  background: rgba(7, 9, 19, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Gradient Text Shimmer */
+.gradient-text {
+  background: linear-gradient(135deg, #c084fc 0%, #38bdf8 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shimmer 6s ease-in-out infinite alternate;
+}
+
+.gradient-text-alt {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Animated Gradient Borders */
+.gradient-border-card {
+  position: relative;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(20, 26, 56, 0.7), rgba(11, 14, 30, 0.8));
+  backdrop-filter: blur(16px);
+}
+
+.gradient-border-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(6, 182, 212, 0.1), rgba(255, 255, 255, 0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.gradient-border-card:hover::before {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(56, 189, 248, 0.7), rgba(236, 72, 153, 0.4));
+}
+
+/* Avatar Pulse Ring Animation */
+.avatar-glow-ring {
+  position: relative;
+}
+.avatar-glow-ring::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #8b5cf6, #06b6d4, #ec4899, #3b82f6);
+  z-index: -1;
+  filter: blur(14px);
+  opacity: 0.65;
+  animation: rotateGlow 8s linear infinite;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Profile Photo Framing & Reveal Animation
+   ========================================================================== */
+.profile-photo-frame {
+  position: relative;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4, #a855f7);
+  background-size: 250% 250%;
+  animation: borderGradientShift 8s ease infinite;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.4), 0 0 45px rgba(6, 182, 212, 0.2);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-photo-frame:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.65), 0 0 65px rgba(6, 182, 212, 0.35);
+}
+
+@keyframes borderGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: 0;
+  animation: photoReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.06);
+}
+
+@keyframes photoReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Rounded Portrait Card for About Me Section */
+.profile-portrait-card {
+  position: relative;
+  border-radius: 2rem;
+  padding: 3px;
+  background: linear-gradient(145deg, rgba(139, 92, 246, 0.7), rgba(6, 182, 212, 0.5), rgba(168, 85, 247, 0.3));
+  box-shadow: 0 15px 35px -10px rgba(139, 92, 246, 0.35), 0 0 20px rgba(6, 182, 212, 0.15);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-portrait-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 45px -10px rgba(139, 92, 246, 0.55), 0 0 35px rgba(6, 182, 212, 0.3);
+}
+
+.profile-portrait-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: calc(2rem - 3px);
+  overflow: hidden;
+  background: #0c0f20;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* Floating Animation */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: floatSlow 7s ease-in-out infinite 2s;
+}
+
+/* Glowing Button Styles */
+.btn-glow-primary {
+  position: relative;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-glow-primary:hover {
+  box-shadow: 0 0 35px rgba(124, 58, 237, 0.7), 0 0 15px rgba(6, 182, 212, 0.5);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-glow-outline {
+  position: relative;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+.btn-glow-outline:hover {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Typewriter Cursor */
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  width: 3px;
+  background: #38bdf8;
+  animation: blink 0.8s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Skill Badge Pills */
+.skill-pill {
+  background: rgba(30, 41, 79, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+}
+.skill-pill:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+}
+
+/* Timeline Custom Connectors */
+.timeline-dot {
+  box-shadow: 0 0 0 4px rgba(7, 9, 19, 1), 0 0 15px #8b5cf6;
+}
+
+/* Modal Transitions */
+.modal-overlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-content {
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.active .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* Toast Notification */
+#toast-notification {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#toast-notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Navigation active link indicator */
+.nav-link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5cf6, #38bdf8);
+  transition: width 0.3s ease;
+  border-radius: 9999px;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link.active {
+  color: #38bdf8;
+}
+
+/* Hobby Cards Hover Glow */
+.hobby-card {
+  position: relative;
+  overflow: hidden;
+}
+.hobby-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+.hobby-card:hover::before {
+  transform: scale(1.6);
+}
+
+/* Mobile Nav Drawer */
+#mobile-menu {
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+/* ==========================================================================
+   PREMIUM INTERACTIVE INTEREST CARDS
+   ========================================================================== */
+.interest-card {
+  position: relative;
+  border-radius: 22px;
+  background: rgba(13, 18, 38, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.35rem;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Focus Visible for Keyboard Accessibility */
+.interest-card:focus-visible {
+  ring: 2px solid #38bdf8;
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+}
+
+/* Subtle Light Sweep Shine Reflection */
+.interest-card::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    45deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 58%
+  );
+  transform: rotate(-25deg) translateY(-100%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.interest-card:hover::after,
+.interest-card.active::after {
+  transform: rotate(-25deg) translateY(100%);
+}
+
+/* Spring-like Icon Transition */
+.interest-card .card-icon {
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.interest-card:hover .card-icon {
+  transform: scale(1.15) rotate(4deg);
+}
+
+.interest-card.active .card-icon {
+  transform: scale(1.18) rotate(-3deg);
+}
+
+/* Card Selection Indicator Pill */
+.interest-card .card-indicator {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interest-card.active .card-indicator {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Base Hover Elevation */
+.interest-card:hover {
+  transform: translateY(-6px);
+}
+
+/* --------------------------------------------------------------------------
+   THEME 1: FULL-STACK DEVELOPMENT (Cyan & Electric Blue)
+   -------------------------------------------------------------------------- */
+.interest-card[data-theme="fullstack"]:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 16px 35px -10px rgba(6, 182, 212, 0.25), 0 0 15px rgba(6, 182, 212, 0.15);
+}
+
+.interest-card[data-theme="fullstack"].active {
+  background: linear-gradient(145deg, rgba(6, 182, 212, 0.18) 0%, rgba(37, 99, 235, 0.22) 50%, rgba(13, 18, 38, 0.95) 100%);
+  border-color: rgba(6, 182, 212, 0.7);
+  box-shadow: 0 0 35px rgba(6, 182, 212, 0.35), 0 20px 40px -10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.interest-card[data-theme="fullstack"].active .card-icon {
+  background: rgba(6, 182, 212, 0.3);
+  border-color: rgba(6, 182, 212, 0.7);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  color: #38bdf8;
+}
+
+.interest-card[data-theme="fullstack"].active .card-title {
+  color: #38bdf8;
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+}
+
+.interest-card[data-theme="fullstack"] .card-bg-pattern {
+  background-image: radial-gradient(rgba(6, 182, 212, 0.25) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* --------------------------------------------------------------------------
+   THEME 2: PENCIL SKETCHING & ART (Pink & Magenta)
+   -------------------------------------------------------------------------- */
+.interest-card[data-theme="art"]:hover {
+  border-color: rgba(236, 72, 153, 0.4);
+  box-shadow: 0 16px 35px -10px rgba(236, 72, 153, 0.25), 0 0 15px rgba(236, 72, 153, 0.15);
+}
+
+.interest-card[data-theme="art"].active {
+  background: linear-gradient(145deg, rgba(236, 72, 153, 0.18) 0%, rgba(219, 39, 119, 0.22) 50%, rgba(13, 18, 38, 0.95) 100%);
+  border-color: rgba(236, 72, 153, 0.7);
+  box-shadow: 0 0 35px rgba(236, 72, 153, 0.35), 0 20px 40px -10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.interest-card[data-theme="art"].active .card-icon {
+  background: rgba(236, 72, 153, 0.3);
+  border-color: rgba(236, 72, 153, 0.7);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+  color: #f472b6;
+}
+
+.interest-card[data-theme="art"].active .card-title {
+  color: #f472b6;
+  text-shadow: 0 0 12px rgba(236, 72, 153, 0.4);
+}
+
+.interest-card[data-theme="art"] .card-bg-pattern {
+  background-image: radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 60%);
+}
+
+/* --------------------------------------------------------------------------
+   THEME 3: CRICKET ENTHUSIAST (Amber & Golden Orange)
+   -------------------------------------------------------------------------- */
+.interest-card[data-theme="cricket"]:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 16px 35px -10px rgba(245, 158, 11, 0.25), 0 0 15px rgba(245, 158, 11, 0.15);
+}
+
+.interest-card[data-theme="cricket"].active {
+  background: linear-gradient(145deg, rgba(245, 158, 11, 0.18) 0%, rgba(234, 88, 12, 0.22) 50%, rgba(13, 18, 38, 0.95) 100%);
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.35), 0 20px 40px -10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.interest-card[data-theme="cricket"].active .card-icon {
+  background: rgba(245, 158, 11, 0.3);
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+}
+
+.interest-card[data-theme="cricket"].active .card-title {
+  color: #fbbf24;
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
+.interest-card[data-theme="cricket"] .card-bg-pattern {
+  background-image: radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.25) 0%, transparent 65%);
+}
+
+/* --------------------------------------------------------------------------
+   THEME 4: FUTURE GOALS (Purple & Violet)
+   -------------------------------------------------------------------------- */
+.interest-card[data-theme="goals"]:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 16px 35px -10px rgba(139, 92, 246, 0.25), 0 0 15px rgba(139, 92, 246, 0.15);
+}
+
+.interest-card[data-theme="goals"].active {
+  background: linear-gradient(145deg, rgba(139, 92, 246, 0.18) 0%, rgba(168, 85, 247, 0.22) 50%, rgba(13, 18, 38, 0.95) 100%);
+  border-color: rgba(139, 92, 246, 0.7);
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.35), 0 20px 40px -10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.interest-card[data-theme="goals"].active .card-icon {
+  background: rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.7);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  color: #c084fc;
+}
+
+.interest-card[data-theme="goals"].active .card-title {
+  color: #c084fc;
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+.interest-card[data-theme="goals"] .card-bg-pattern {
+  background-image: radial-gradient(rgba(139, 92, 246, 0.25) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Subtle Ambient Rocket Thrust Animation */
+@keyframes rocketThrust {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.interest-card[data-theme="goals"]:hover .card-icon i,
+.interest-card[data-theme="goals"].active .card-icon i {
+  animation: rocketThrust 1.2s ease-in-out infinite;
+}
+
+/* Accessibility: Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .interest-card,
+  .interest-card::after,
+  .interest-card .card-icon,
+  .interest-card .card-icon i {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
